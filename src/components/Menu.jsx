@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios' 
-import { fetchPosts } from '../actions'
+import { fetchPosts } from '../actions/index'
 import { connect } from 'react-redux'
 
 class App extends Component {

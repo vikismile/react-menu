@@ -10,3 +10,4 @@ export const fetchPosts = id => dispatch => {
     .then(response => response.json())
     .then(json => dispatch(receiveMenu(json)))
 }
+

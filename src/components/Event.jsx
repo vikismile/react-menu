@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+/*import React, {Component} from 'react';
 import { connect } from 'react-redux'
 
 
@@ -21,3 +21,55 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(Event);
+*/
+
+
+import React, {Component} from 'react'
+import axios from 'axios' 
+import { fetchPosts } from '../actions/index1'
+import { connect } from 'react-redux'
+var ids;
+class Ap extends Component {
+  
+  componentWillReceiveProps (newProps) {
+    console.log("prev"+this.props.menu.path)
+    const pat = newProps.menu.path
+    console.log("new"+pat)
+    console.log(pat[pat.length-1])
+    if(pat.length>0){
+    if(pat[pat.length-1].type=="EVENT"){
+    /* if в последнем элементе меню соревнование */
+      /* request events */
+      ids = pat[pat.length-1].competition_id
+      this.props.dispatch(fetchPosts(ids))
+   
+  }
+  }
+}
+   shouldComponentUpdate(){
+    if(!ids) return false
+    else return true
+   } 
+   
+   
+  render() {
+    //const {path} = this.props.menu
+    const events = this.props.events
+    //const {event} = this.props.events
+    return (
+      <div>
+        <p>Events:</p>
+        {events.map(({event,id, name}) => <p key={id} id={id}>{name}</p>)}
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    menu: state.menu,
+    events: state.events
+  }
+}
+
+export default connect(mapStateToProps)(Ap)
