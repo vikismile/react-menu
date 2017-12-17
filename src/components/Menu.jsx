@@ -17,8 +17,8 @@ class App extends Component {
   render() {
     const {path, children} = this.props.menu
     return (
-      <div>
-        <p onClick={this.click}>All Sports</p>
+      <div className="menu">
+        <h1 onClick={this.click}>All Sports</h1>
         {path.map(({id, name, type}) => <p key={id} id={id}  onClick={this.click} className="path">{name}</p>)}
         {children.map(({id, name, type}) => <p key={id} id={id} onClick={this.click} className="children">{name}</p>)}
       </div>

@@ -28,11 +28,14 @@ import React, {Component} from 'react'
 import axios from 'axios' 
 import { fetchPosts } from '../actions/index1'
 import { connect } from 'react-redux'
+import styles from '../../styles/style.scss'
 var ids;
 class Ap extends Component {
   
   componentWillReceiveProps (newProps) {
-    console.log("prev"+this.props.menu.path)
+    if(this.props.menu === newProps.menu) return null
+    else{
+    console.log("prev",this.props.menu.path)
     const pat = newProps.menu.path
     console.log("new"+pat)
     console.log(pat[pat.length-1])
@@ -42,7 +45,7 @@ class Ap extends Component {
       /* request events */
       ids = pat[pat.length-1].competition_id
       this.props.dispatch(fetchPosts(ids))
-   
+    }
   }
   }
 }
@@ -57,9 +60,9 @@ class Ap extends Component {
     const events = this.props.events
     //const {event} = this.props.events
     return (
-      <div>
-        <p>Events:</p>
-        {events.map(({event,id, name}) => <p key={id} id={id}>{name}</p>)}
+      <div className = 'event'>
+        <h1>Events:</h1>
+        {events.map(({event, id, name}) => <p key={event.id} id={event.id}>{event.name}</p>)}
       </div>
     );
   }

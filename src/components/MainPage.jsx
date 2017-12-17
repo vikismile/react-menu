@@ -8,10 +8,11 @@ class MainPage extends Component {
       return null;
     }
     return (
-      <div>
+      /*<div>
         <p>hello</p>
         <p>{path[path.length-1].name}</p>
-      </div>
+      </div>*/
+      null
     );
   }
 }

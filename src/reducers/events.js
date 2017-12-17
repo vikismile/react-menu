@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import { RECEIVE_EVENTS } from '../actions'
+import { RECEIVE_EVENTS } from '../actions/index1'
 
-export const events = (state = [{event: [], name: [], id: []}], action) => {
+export const events = (state = [{events: [], event: [], name: [], id: []}], action)=> {
   switch (action.type) {
     case RECEIVE_EVENTS:
       return action.json
